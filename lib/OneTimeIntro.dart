@@ -52,7 +52,7 @@ class _StartpageState extends State<Startpage> {
                     onTap: () async {
                       // _controller.animateToPage(2, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
                       final prefs = await SharedPreferences.getInstance();
-                      await prefs.setBool('first_launch', false);
+                      await prefs.setBool('isFirstTime', false);
                       Navigator.pushAndRemoveUntil(
                           context,
                           myRoute(Login()),(Route)=>false
@@ -88,7 +88,7 @@ class _StartpageState extends State<Startpage> {
                           } else {
                             // LAST PAGE → START
                             final prefs = await SharedPreferences.getInstance();
-                            await prefs.setBool('first_launch', false);
+                            await prefs.setBool('isFirstTime', false);
                             Navigator.pushAndRemoveUntil(
                               context,
                               myRoute(Login()),(Route)=>false

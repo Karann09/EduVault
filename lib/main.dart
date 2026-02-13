@@ -1,7 +1,5 @@
-import 'package:eduvault/Components/Images(StartingPages).dart';
 import 'package:eduvault/Home.dart';
 import 'package:eduvault/Login/Login.dart';
-import 'package:eduvault/Login/Registration.dart';
 import 'package:eduvault/OneTimeIntro.dart';
 import 'package:eduvault/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,7 +14,9 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
   final bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
 
-  final bool isLoggedIn = FirebaseAuth.instance.currentUser != null;
+  final User ? user = FirebaseAuth.instance.currentUser;
+  final bool isLoggedIn = user != null;
+
   runApp(MyApp(isFirstTime: isFirstTime, isLoggedIn: isLoggedIn));
 }
 
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black,      // Default text/icon color
         ),
       ),
-      home: isFirstTime ? const Startpage() : isLoggedIn ? const Home() : const Login(),
+      home: isFirstTime ? const Startpage() : (isLoggedIn ? const Home() : const Login()),
     );
   }
 

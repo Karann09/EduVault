@@ -172,7 +172,8 @@ class _HomeState extends State<Home> {
               ListTile(
                 leading: Icon(Icons.logout, color: Colors.red),
                 title: Text("Logout", style: TextStyle(color: Colors.red)),
-                onTap: () {
+                onTap: () async {
+                  await FirebaseAuth.instance.signOut();
                   Navigator.pushAndRemoveUntil(context, myRoute(Login()),(Route)=>false);
                 },
               ),
