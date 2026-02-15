@@ -77,7 +77,8 @@ class _StartpageState extends State<Startpage> {
                   child: ElevatedButton(
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.blueAccent,
-                          minimumSize: Size(double.infinity, 50)
+                          minimumSize: Size(double.infinity, 50),
+                        elevation: 5,
                       ),
                       onPressed: () async {
                           if (currentIndex < data.length - 1) {

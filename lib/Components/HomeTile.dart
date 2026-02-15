@@ -25,9 +25,9 @@ class HomeTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
-              blurRadius: 6,
-              offset: Offset(0, 4),
+              color: Colors.black,
+              blurRadius: 5,
+              offset: Offset(4, 4),
             ),
           ],
         ),
@@ -38,11 +38,11 @@ class HomeTile extends StatelessWidget {
               imagePath,
               height: 60,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 2),
             Text(
               title,
               style: const TextStyle(
-                fontSize: 15,
+                fontSize: 11,
                 fontWeight: FontWeight.w600,
               ),
             ),

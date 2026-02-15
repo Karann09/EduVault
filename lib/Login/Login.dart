@@ -73,8 +73,8 @@ class _LoginState extends State<Login> {
                   children: [
                     Image.asset(
                       "assets/images/Login.png",
-                      height: 150,
-                      width: 250,
+                      height: 180,
+                      width: 280,
                     ),
 
                     const SizedBox(height: 20),
@@ -82,19 +82,31 @@ class _LoginState extends State<Login> {
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          "Welcome,",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "  Welcome,",
+                              style: TextStyle(
+                                fontSize: 33,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "    Sign in to continue !",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
 
                     const SizedBox(height: 5),
-
                     Padding(
                       padding: const EdgeInsets.all(12),
                       child: Column(
@@ -135,8 +147,7 @@ class _LoginState extends State<Login> {
                             ),
                           ),
 
-                          const SizedBox(height: 8),
-
+                          const SizedBox(height: 5),
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -153,6 +164,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
 
+                    const SizedBox(height: 7),
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
@@ -162,13 +174,14 @@ class _LoginState extends State<Login> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent,
                         foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 120,
-                          vertical: 14,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 140,
+                          vertical: 12,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
                         ),
+                        elevation: 5, // Shadow
                       ),
                       child: const Text(
                         'Login',
@@ -179,7 +192,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
 
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 30),
 
                     TextButton(
                       style: ButtonStyle(

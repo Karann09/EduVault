@@ -22,8 +22,13 @@ class _RegistrationState extends State<Registration> {
 
   final List<String> classList = ["9", "10", "11", "12"];
   final _formKey = GlobalKey<FormState>();
+  bool isLoading = false;
 
   Future<void> createUser() async {
+    if (isLoading) return;
+    setState(() {
+      isLoading = true;
+    });
     try {
       UserCredential userCredential =
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -51,6 +56,9 @@ class _RegistrationState extends State<Registration> {
       );
 
     } on FirebaseAuthException catch (e) {
+      setState(() {
+        isLoading = false;
+      });
       String message = "Registration Failed";
 
       if (e.code == 'email-already-in-use') {
@@ -83,7 +91,7 @@ class _RegistrationState extends State<Registration> {
         backgroundColor: Color(0xFFF7FAFF),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 100),
+            padding: const EdgeInsets.only(top: 90),
             child: Center(
               child: Column(
                 children: [
@@ -93,23 +101,36 @@ class _RegistrationState extends State<Registration> {
                     width: 250,
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
 
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        "Create Account,",
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "  Create Account,",
+                            style: TextStyle(
+                              fontSize: 33,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "    Sign up to get started!",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
 
                   Padding(
                     padding: const EdgeInsets.all(12),
@@ -126,7 +147,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                           ),
 
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 5),
 
                           DropdownButtonFormField<String>(
                             value: selectedClass,
@@ -150,7 +171,7 @@ class _RegistrationState extends State<Registration> {
                             },
                           ),
 
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 5),
 
                           TextFormField(
                             controller: username,
@@ -161,7 +182,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                           ),
 
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 5),
 
                           TextFormField(
                             controller: password,
@@ -191,22 +212,24 @@ class _RegistrationState extends State<Registration> {
                     ),
                   ),
 
+                  const SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        await createUser();
+                        isLoading ? null : createUser();
                       }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueAccent,
                       foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 120,
-                        vertical: 14,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 130,
+                        vertical: 12,
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
                       ),
+                      elevation: 5, // Shadow
                     ),
                     child: const Text(
                       'Register',
@@ -217,7 +240,7 @@ class _RegistrationState extends State<Registration> {
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 25),
 
                   TextButton(
                     style: ButtonStyle(

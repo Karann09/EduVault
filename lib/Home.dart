@@ -46,8 +46,8 @@ class _HomeState extends State<Home> {
   final PageController _controller = PageController();
   List<String> images = [
     'assets/images/S2.jpg',
-    'assets/images/S3.jpg',
-    'assets/images/S1.jpg',
+    'assets/images/S2.jpg',
+    'assets/images/S2.jpg',
   ];
 
   @override
@@ -58,8 +58,9 @@ class _HomeState extends State<Home> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("EduVault"),
+          title: Text("EduVault",style: TextStyle(color: Colors.white)),
           backgroundColor: Colors.blue.shade300,
+          iconTheme: IconThemeData(color: Colors.white),
           actions: [
             // IconButton(onPressed: (){}, icon: Icon(Icons.widgets))
             IconButton(onPressed: (){}, icon: Icon(Icons.grid_view))
@@ -68,6 +69,8 @@ class _HomeState extends State<Home> {
 
 
         drawer: Drawer(
+          width: 260,
+          backgroundColor: Color(0xFFF7FAFF),
           child: Column(
             children: [
               // StreamBuilder listens to Firestore changes
@@ -139,7 +142,6 @@ class _HomeState extends State<Home> {
                 },
               ),
 
-              // ... The rest of your Drawer items (Profile, Settings, Logout) ...
               Expanded(
                 child: ListView(
                   padding: EdgeInsets.zero,
@@ -168,7 +170,7 @@ class _HomeState extends State<Home> {
               ),
 
               // 3. Logout Section (at the bottom)
-              Divider(),
+              Divider(color: Colors.black),
               ListTile(
                 leading: Icon(Icons.logout, color: Colors.red),
                 title: Text("Logout", style: TextStyle(color: Colors.red)),
@@ -182,7 +184,7 @@ class _HomeState extends State<Home> {
           ),
         ),
 
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xFFF7FAFF),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -193,7 +195,7 @@ class _HomeState extends State<Home> {
                 Column(
                   children: [
                     SizedBox(
-                      height: 180, // Set the height of your slider
+                      height: 160, // Set the height of your slider
                       child: PageView.builder(
                         onPageChanged: (index) {
                           setState(() {
@@ -229,17 +231,16 @@ class _HomeState extends State<Home> {
                   ],
                 ),
 
-
                 GridView.count(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisCount: 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 10,
-                  padding: const EdgeInsets.only(right: 5, left: 5, top: 10),
+                  crossAxisSpacing: 40,
+                  mainAxisSpacing: 30,
+                  padding: const EdgeInsets.only(right: 20, left: 20, top: 10,bottom: 100),
                   children: [
                     HomeTile(
-                      title: "Paper Pattern",
+                      title: "Question Paper",
                       imagePath: "assets/images/Slide1.png",
                       onTap: () {},
                     ),
@@ -249,7 +250,7 @@ class _HomeState extends State<Home> {
                       onTap: () {},
                     ),
                     HomeTile(
-                      title: "Syllabus",
+                      title: "Textbooks",
                       imagePath: "assets/images/Slide3.png",
                       onTap: () {},
                     ),
@@ -259,12 +260,12 @@ class _HomeState extends State<Home> {
                       onTap: () {},
                     ),
                     HomeTile(
-                      title: "Subject",
+                      title: "Paper Solution",
                       imagePath: "assets/images/Slide3.png",
                       onTap: () {Navigator.push(context, myRoute(Subject()));},
                     ),
                     HomeTile(
-                      title: "Notes",
+                      title: "Time Table",
                       imagePath: "assets/images/Slide1.png",
                       onTap: () {},
                     ),
