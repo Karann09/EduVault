@@ -15,10 +15,7 @@ class _QuizState extends State<Quiz> {
       body: SingleChildScrollView(
         child: Container(
           color: Colors.yellowAccent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Center(child: Text("Quiz Page"))],
-          ),
+          child: Column(children: [Center(child: Text("Quiz Page"))]),
         ),
       ),
     );
