@@ -1,8 +1,12 @@
+// Used with input fields for validation on inputs
+
 import 'package:flutter/cupertino.dart';
 
 class FormValidators {
   static String? emailValidator(String? value) {
-    final emailReg = RegExp(r'^[a-zA-Z0-9._%+-]+@gmail\.com$');
+    final emailReg = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
 
     if (value!.isEmpty || value == '') {
       return 'Please Enter Email';
@@ -48,12 +52,14 @@ class FormValidators {
     return null;
   }
 
-  static String? confirmPasswordValidator(String? value, TextEditingController newPassword) {
+  static String? confirmPasswordValidator(
+    String? value,
+    TextEditingController newPassword,
+  ) {
     if (value != newPassword.text) {
       return 'Password Do Not Match';
     }
 
     return null;
   }
-
 }

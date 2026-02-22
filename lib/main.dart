@@ -1,11 +1,14 @@
-import 'package:eduvault/Home.dart';
+import 'package:eduvault/Home/Home.dart';
 import 'package:eduvault/Login/Login.dart';
 import 'package:eduvault/OneTimeIntro.dart';
+import 'package:eduvault/Rough.dart';
+import 'package:eduvault/Services(Features)/Notes.dart';
 import 'package:eduvault/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,10 +39,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: isFirstTime ? const Startpage() : (isLoggedIn ? const Home() : const Login()),
+      // home: Notes(selectedClass: 9),
     );
   }
-
-
 }
 
 

@@ -20,7 +20,7 @@ class _RegistrationState extends State<Registration> {
   String? selectedClass;
   bool eye = true;
 
-  final List<String> classList = ["9", "10", "11", "12"];
+  final List<String> classList = ["9", "10"];
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
 
@@ -30,11 +30,11 @@ class _RegistrationState extends State<Registration> {
       isLoading = true;
     });
     try {
-      UserCredential userCredential =
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: username.text.trim(),
-        password: password.text.trim(),
-      );
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: username.text.trim(),
+            password: password.text.trim(),
+          );
 
       String uid = userCredential.user!.uid;
 
@@ -46,15 +46,11 @@ class _RegistrationState extends State<Registration> {
         'createdAt': FieldValue.serverTimestamp(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Registration Successful")),
-      );
-
-      Navigator.pushReplacement(
+      ScaffoldMessenger.of(
         context,
-        myRoute(Login()),
-      );
+      ).showSnackBar(SnackBar(content: Text("Registration Successful")));
 
+      Navigator.pushReplacement(context, myRoute(Login()));
     } on FirebaseAuthException catch (e) {
       setState(() {
         isLoading = false;
@@ -69,9 +65,9 @@ class _RegistrationState extends State<Registration> {
         message = "Password too weak";
       }
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(message)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
     }
   }
 
@@ -159,10 +155,10 @@ class _RegistrationState extends State<Registration> {
                             items: classList
                                 .map(
                                   (value) => DropdownMenuItem(
-                                value: value,
-                                child: Text(value),
-                              ),
-                            )
+                                    value: value,
+                                    child: Text(value),
+                                  ),
+                                )
                                 .toList(),
                             onChanged: (val) {
                               setState(() {
@@ -199,13 +195,12 @@ class _RegistrationState extends State<Registration> {
                                   });
                                 },
                                 icon: Icon(
-                                  eye
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
+                                  eye ? Icons.visibility_off : Icons.visibility,
                                 ),
                               ),
                               border: const OutlineInputBorder(),
                             ),
+                            keyboardType: TextInputType.number,
                           ),
                         ],
                       ),
@@ -243,14 +238,9 @@ class _RegistrationState extends State<Registration> {
                   const SizedBox(height: 25),
 
                   TextButton(
-                    style: ButtonStyle(
-                      overlayColor: .all(Colors.transparent),
-                    ),
+                    style: ButtonStyle(overlayColor: .all(Colors.transparent)),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        myRoute(Login()),
-                      );
+                      Navigator.push(context, myRoute(Login()));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

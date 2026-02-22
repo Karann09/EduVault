@@ -1,0 +1,356 @@
+{
+  "classes": [
+    {
+      "class_id": "9",
+      "subjects": [
+        {
+          "subject_name": "English",
+          "chapters": [
+            {"no": "1.1", "name": "Life", "file": "Empty.pdf"},
+            {"no": "1.2", "name": "A Synopsis- The Swiss Family Robinson", "file": "Empty.pdf"},
+            {"no": "1.3", "name": "Have you ever seen...?", "file": "Empty.pdf"},
+            {"no": "1.4", "name": "Have you thought of the verb ‘have’", "file": "Empty.pdf"},
+            {"no": "1.5", "name": "The Necklace", "file": "Empty.pdf"},
+
+            {"no": "2.1", "name": "Invictus", "file": "Empty.pdf"},
+            {"no": "2.2", "name": "A True Story of Sea Turtles", "file": "Empty.pdf"},
+            {"no": "2.3", "name": "Somebody’s Mother", "file": "Empty.pdf"},
+            {"no": "2.4", "name": "The Fall of Troy", "file": "Empty.pdf"},
+            {"no": "2.5", "name": "Autumn", "file": "Empty.pdf"},
+            {"no": "2.6", "name": "The Past in the Present", "file": "Empty.pdf"},
+
+            {"no": "3.1", "name": "Silver", "file": "Empty.pdf"},
+            {"no": "3.2", "name": "Reading Works of Art", "file": "Empty.pdf"},
+            {"no": "3.3", "name": "The Road Not Taken", "file": "Empty.pdf"},
+            {"no": "3.4", "name": "How the First Letter was Written", "file": "Empty.pdf"},
+
+            {"no": "4.1", "name": "Please Listen!", "file": "Empty.pdf"},
+            {"no": "4.2", "name": "The Storyteller", "file": "Empty.pdf"},
+            {"no": "4.3", "name": "Intellectual Rubbish", "file": "Empty.pdf"},
+            {"no": "4.4", "name": "My Financial Career", "file": "Empty.pdf"},
+            {"no": "4.5", "name": "Tansen", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Hindi",
+          "chapters": [
+            {"no": "1.1", "name": "चाँदनी रात (कविता)", "file": "Empty.pdf"},
+            {"no": "1.2", "name": "बिल्ली का बिलुंगड़ा", "file": "Empty.pdf"},
+            {"no": "1.3", "name": "कबीर (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "1.4", "name": "किताबें (कविता)", "file": "Empty.pdf"},
+            {"no": "1.5", "name": "जूलिया", "file": "Empty.pdf"},
+            {"no": "1.6", "name": "ऐ सखि! (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "1.7", "name": "डॉक्टर का अपहरण", "file": "Empty.pdf"},
+            {"no": "1.8", "name": "वीरभूमि पर कुछ दिन", "file": "Empty.pdf"},
+            {"no": "1.9", "name": "वरदान माँगूँगा नहीं (कविता)", "file": "Empty.pdf"},
+            {"no": "1.10", "name": "रात का चौकीदार (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "1.11", "name": "निर्माणों के पावन युग में (कविता)", "file": "Empty.pdf"},
+
+            {"no": "2.1", "name": "कह कविराय (कविता)", "file": "Empty.pdf"},
+            {"no": "2.2", "name": "जंगल (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "2.3", "name": "इनाम", "file": "Empty.pdf"},
+            {"no": "2.4", "name": "सिंधु का जल (कविता)", "file": "Empty.pdf"},
+            {"no": "2.5", "name": "अतीत के पत्र", "file": "Empty.pdf"},
+            {"no": "2.6", "name": "निसर्ग वैभव (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "2.7", "name": "शिष्टाचार", "file": "Empty.pdf"},
+            {"no": "2.8", "name": "उड़ान (कविता)", "file": "Empty.pdf"},
+            {"no": "2.9", "name": "मेरे पिता जी (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "2.10", "name": "अपराजेय", "file": "Empty.pdf"},
+            {"no": "2.11", "name": "स्वतंत्रता गान (कविता)", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name" : "Marathi",
+          "chapters": [
+            {"no": "1", "name": "सर्वात्मका शिवसुंदरा (प्रार्थना)", "file": "Empty.pdf"},
+            {"no": "2.1", "name": "संतवाणी (अ) - भेटीलागी जीवा", "file": "Empty.pdf"},
+            {"no": "2.2", "name": "संतवाणी (आ) - संतकृपा झाली", "file": "Empty.pdf"},
+            {"no": "3", "name": "बेटा, मी एकतो आहे!", "file": "Empty.pdf"},
+            {"no": "4", "name": "जी. आय. पी. रेल्वे", "file": "Empty.pdf"},
+
+            {"no": "5", "name": "व्यायामाचे महत्त्व (कविता)", "file": "Empty.pdf"},
+            {"no": "6", "name": "ऑलिंपिक वर्तुळांचा गोफ", "file": "Empty.pdf"},
+            {"no": "7", "name": "दिव्येच्या शोधाचा दिव्य", "file": "Empty.pdf"},
+            {"no": "8", "name": "सखू आजी", "file": "Empty.pdf"},
+
+            {"no": "9", "name": "उजाड उघडे माळरानही (कविता)", "file": "Empty.pdf"},
+            {"no": "10", "name": "कुलूप", "file": "Empty.pdf"},
+            {"no": "11", "name": "आभाळांतल्या पाऊलवाटा", "file": "Empty.pdf"},
+            {"no": "12", "name": "पुन्हा एकदा (कविता)", "file": "Empty.pdf"},
+
+            {"no": "13", "name": "तिफन (कविता)", "file": "Empty.pdf"},
+            {"no": "14", "name": "ते जीवनदायी झाड", "file": "Empty.pdf"},
+            {"no": "15", "name": "माझे शिक्षक व संस्कार", "file": "Empty.pdf"},
+            {"no": "16", "name": "शब्दांचा खेळ", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Maths 1",
+          "chapters": [
+            {"no": "1", "name": "Sets", "file": "Empty.pdf"},
+            {"no": "2", "name": "Real Numbers", "file": "Empty.pdf"},
+            {"no": "3", "name": "Polynomials", "file": "Empty.pdf"},
+            {"no": "4", "name": "Ratio and Proportion", "file": "Empty.pdf"},
+            {"no": "5", "name": "Linear Equations in Two Variables", "file": "Empty.pdf"},
+            {"no": "6", "name": "Financial Planning", "file": "Empty.pdf"},
+            {"no": "7", "name": "Statistics", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name":"Maths 2" ,
+          "chapters":[
+            {"no": "1", "name": "Basic Concepts in Geometry", "file": "Empty.pdf"},
+            {"no": "2", "name": "Parallel Lines", "file": "Empty.pdf"},
+            {"no": "3", "name": "Triangles", "file": "Empty.pdf"},
+            {"no": "4", "name": "Construction of Triangles", "file": "Empty.pdf"},
+            {"no": "5", "name": "Quadrilaterals", "file": "Empty.pdf"},
+            {"no": "6", "name": "Circle", "file": "Empty.pdf"},
+            {"no": "7", "name": "Co-ordinate Geometry", "file": "Empty.pdf"},
+            {"no": "8", "name": "Trigonometry", "file": "Empty.pdf"},
+            {"no": "9", "name": "Surface Area and Volume", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name":"Science",
+          "chapters":[
+            {"no": "1", "name": "Laws of Motion", "file": "Empty.pdf"},
+            {"no": "2", "name": "Work and Energy", "file": "Empty.pdf"},
+            {"no": "3", "name": "Current Electricity", "file": "Empty.pdf"},
+            {"no": "4", "name": "Measurement of Matter", "file": "Empty.pdf"},
+            {"no": "5", "name": "Acids, Bases and Salts", "file": "Empty.pdf"},
+            {"no": "6", "name": "Classification of Plants", "file": "Empty.pdf"},
+            {"no": "7", "name": "Energy Flow in an Ecosystem", "file": "Empty.pdf"},
+            {"no": "8", "name": "Useful and Harmful Microbes", "file": "Empty.pdf"},
+            {"no": "9", "name": "Environmental Management", "file": "Empty.pdf"},
+            {"no": "10", "name": "Information Communication Technology (ICT)", "file": "Empty.pdf"},
+            {"no": "11", "name": "Reflection of Light", "file": "Empty.pdf"},
+            {"no": "12", "name": "Study of Sound", "file": "Empty.pdf"},
+            {"no": "13", "name": "Carbon: An Important Element", "file": "Empty.pdf"},
+            {"no": "14", "name": "Substances in Common Use", "file": "Empty.pdf"},
+            {"no": "15", "name": "Life Processes in Living Organisms", "file": "Empty.pdf"},
+            {"no": "16", "name": "Heredity and Variation", "file": "Empty.pdf"},
+            {"no": "17", "name": "Introduction to Biotechnology", "file": "Empty.pdf"},
+            {"no": "18", "name": "Observing Space: Telescopes", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name":"History",
+          "chapters":[
+            {"no": "H1", "name": "Sources of History", "file": "Empty.pdf"},
+            {"no": "H2", "name": "India: Events after 1960", "file": "Empty.pdf"},
+            {"no": "H3", "name": "India’s Internal Challenges", "file": "Empty.pdf"},
+            {"no": "H4", "name": "Economic Development", "file": "Empty.pdf"},
+            {"no": "H5", "name": "Education", "file": "Empty.pdf"},
+            {"no": "H6", "name": "Empowerment of Women and Other Weaker Sections", "file": "Empty.pdf"},
+            {"no": "H7", "name": "Science and Technology", "file": "Empty.pdf"},
+            {"no": "H8", "name": "Industry and Trade", "file": "Empty.pdf"},
+            {"no": "H9", "name": "Changing Life: 1", "file": "Empty.pdf"},
+            {"no": "H10", "name": "Changing Life: 2", "file": "Empty.pdf"},
+
+            {"no": "P1", "name": "Post World War Political Developments", "file": "Empty.pdf"},
+            {"no": "P2", "name": "India’s Foreign Policy", "file": "Empty.pdf"},
+            {"no": "P3", "name": "India’s Defence System", "file": "Empty.pdf"},
+            {"no": "P4", "name": "The United Nations", "file": "Empty.pdf"},
+            {"no": "P5", "name": "India and Other Countries", "file": "Empty.pdf"},
+            {"no": "P6", "name": "International Problems", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Geography",
+          "chapters": [
+            {"no": "1", "name": "Distributional Maps", "file": "Empty.pdf"},
+            {"no": "2", "name": "Endogenetic Movements", "file": "Empty.pdf"},
+            {"no": "3", "name": "Exogenetic Movements Part-1", "file": "Empty.pdf"},
+            {"no": "4", "name": "Exogenetic Movements Part-2", "file": "Empty.pdf"},
+            {"no": "5", "name": "Precipitation", "file": "Empty.pdf"},
+            {"no": "6", "name": "Properties of Sea Water", "file": "Empty.pdf"},
+            {"no": "7", "name": "International Date Line", "file": "Empty.pdf"},
+            {"no": "8", "name": "Introduction to Economics", "file": "Empty.pdf"},
+            {"no": "9", "name": "Trade", "file": "Empty.pdf"},
+            {"no": "10", "name": "Urbanisation", "file": "Empty.pdf"},
+            {"no": "11", "name": "Transport and Communication", "file": "Empty.pdf"},
+            {"no": "12", "name": "Tourism", "file": "Empty.pdf"}
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": "10",
+      "subjects": [
+        {
+          "subject_name": "English",
+          "chapters": [
+            {"no": "1.1", "name": "Where the Mind is Without Fear", "file": "Empty.pdf"},
+            {"no": "1.2", "name": "The Thief’s Story", "file": "Empty.pdf"},
+            {"no": "1.3", "name": "On Wings of Courage", "file": "Empty.pdf"},
+            {"no": "1.4", "name": "All the World’s a Stage", "file": "Empty.pdf"},
+            {"no": "1.5", "name": "Joan of Arc", "file": "Empty.pdf"},
+            {"no": "1.6", "name": "The Alchemy of Nature", "file": "Empty.pdf"},
+
+            {"no": "2.1", "name": "Animals", "file": "Empty.pdf"},
+            {"no": "2.2", "name": "Three Questions", "file": "Empty.pdf"},
+            {"no": "2.3", "name": "Connecting the Dots", "file": "Empty.pdf"},
+            {"no": "2.4", "name": "The Pulley", "file": "Empty.pdf"},
+            {"no": "2.5", "name": "Let’s March", "file": "Empty.pdf"},
+            {"no": "2.6", "name": "Science and Spirituality", "file": "Empty.pdf"},
+
+            {"no": "3.1", "name": "Night of the Scorpion", "file": "Empty.pdf"},
+            {"no": "3.2", "name": "The Night I Met Einstein", "file": "Empty.pdf"},
+            {"no": "3.3", "name": "Stephen Hawking", "file": "Empty.pdf"},
+            {"no": "3.4", "name": "The Will to Win", "file": "Empty.pdf"},
+            {"no": "3.5", "name": "Unbeatable Super Mom-Mary Kom", "file": "Empty.pdf"},
+            {"no": "3.6", "name": "The Concert", "file": "Empty.pdf"},
+
+            {"no": "4.1", "name": "A Thing of Beauty is a Joy For Ever", "file": "Empty.pdf"},
+            {"no": "4.2", "name": "The Luncheon", "file": "Empty.pdf"},
+            {"no": "4.3", "name": "World Heritage", "file": "Empty.pdf"},
+            {"no": "4.4", "name": "The Height of the Ridiculous", "file": "Empty.pdf"},
+            {"no": "4.5", "name": "The Old Man and the Sea: Book Review", "file": "Empty.pdf"},
+            {"no": "4.6", "name": "The Gift of the Magi", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Hindi",
+          "chapters": [
+            {"no": "1.1", "name": "भारत महिमा", "file": "Empty.pdf"},
+            {"no": "1.2", "name": "लक्ष्मी", "file": "Empty.pdf"},
+            {"no": "1.3", "name": "वाह रे! हमदर्द", "file": "Empty.pdf"},
+            {"no": "1.4", "name": "मन (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "1.5", "name": "गोवा : जैसा मैंने देखा", "file": "Empty.pdf"},
+            {"no": "1.6", "name": "गिरिधर नागर (कविता)", "file": "Empty.pdf"},
+            {"no": "1.7", "name": "खुला आकाश (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "1.8", "name": "ग़ज़ल", "file": "Empty.pdf"},
+            {"no": "1.9", "name": "रीढ़ की हड्डी", "file": "Empty.pdf"},
+            {"no": "1.10", "name": "ठेस (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "1.11", "name": "कृषक का गान", "file": "Empty.pdf"},
+
+            {"no": "2.1", "name": "बरषहिं जलद", "file": "Empty.pdf"},
+            {"no": "2.2", "name": "दो लघुकथाएँ (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "2.3", "name": "श्रम साधना", "file": "Empty.pdf"},
+            {"no": "2.4", "name": "छापा", "file": "Empty.pdf"},
+            {"no": "2.5", "name": "ईमानदारी की प्रतिमूर्ति", "file": "Empty.pdf"},
+            {"no": "2.6", "name": "हम हस धरती की संतति हैं (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "2.7", "name": "महिला आश्रम", "file": "Empty.pdf"},
+            {"no": "2.8", "name": "अपनी गंध नहीं बेचूँगा", "file": "Empty.pdf"},
+            {"no": "2.9", "name": "जब तक जिंदा रहूँ, लिखता रहूँ", "file": "Empty.pdf"},
+            {"no": "2.10", "name": "बूढ़ी काकी (पूरक पठन)", "file": "Empty.pdf"},
+            {"no": "2.11", "name": "समता की ओर", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name" : "Marathi",
+          "chapters": [
+            {"no": "1", "name": "तू बुद्धी दे (प्रार्थना)", "file": "Empty.pdf"},
+            {"no": "2.1", "name": "संतवाणी (अ) - अंकिला मी दास तुझा", "file": "Empty.pdf"},
+            {"no": "2.2", "name": "संतवाणी (आ) - योगी पावन तोकळी", "file": "Empty.pdf"},
+            {"no": "3", "name": "शाल", "file": "Empty.pdf"},
+            {"no": "4", "name": "उपास", "file": "Empty.pdf"},{"no": "4", "name": "उपास", "file": "Empty.pdf"},
+
+            {"no": "5", "name": "दोन दिवस (कविता)", "file": "Empty.pdf"},
+            {"no": "6", "name": "चुडीवाला", "file": "Empty.pdf"},
+            {"no": "7", "name": "फुटप्रिंट्स", "file": "Empty.pdf"},
+            {"no": "8", "name": "ऊर्जाशक्तीचा जागर", "file": "Empty.pdf"},
+
+            {"no": "9", "name": "औक्षण (कविता)", "file": "Empty.pdf"},
+            {"no": "10", "name": "रंग साहित्याचे", "file": "Empty.pdf"},
+            {"no": "11", "name": "जंगल डायरी", "file": "Empty.pdf"},
+            {"no": "12", "name": "रंग मजेचे रंग उदयाचे (कविता)", "file": "Empty.pdf"},
+
+            {"no": "13", "name": "बीज पेरले गेले", "file": "Empty.pdf"},
+            {"no": "14", "name": "बीज पेरले गेले", "file": "Empty.pdf"},
+            {"no": "15", "name": "खरा नागरिक", "file": "Empty.pdf"},
+            {"no": "16", "name": "स्वप्न करू साकार (कविता)", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Maths 1",
+          "chapters" : [
+            {"no": "1", "name": "Linear Equations in Two Variables", "file": "Empty.pdf"},
+            {"no": "2", "name": "Quadratic Equations", "file": "Empty.pdf"},
+            {"no": "3", "name": "Arithmetic Progression", "file": "Empty.pdf"},
+            {"no": "4", "name": "Financial Planning", "file": "Empty.pdf"},
+            {"no": "5", "name": "Probability", "file": "Empty.pdf"},
+            {"no": "6", "name": "Statistics", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Maths 2",
+          "chapters" : [
+            {"no": "1", "name": "Similarity", "file": "Empty.pdf"},
+            {"no": "2", "name": "Pythagoras Theorem", "file": "Empty.pdf"},
+            {"no": "3", "name": "Circle", "file": "Empty.pdf"},
+            {"no": "4", "name": "Geometric Constructions", "file": "Empty.pdf"},
+            {"no": "5", "name": "Coordinate Geometry", "file": "Empty.pdf"},
+            {"no": "6", "name": "Trigonometry", "file": "Empty.pdf"},
+            {"no": "7", "name": "Mensuration", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Science 1",
+          "chapters": [
+            {"no": "1", "name": "Gravitation", "file": "Empty.pdf"},
+            {"no": "2", "name": "Periodic Classification of Element", "file": "Empty.pdf"},
+            {"no": "3", "name": "Chemical Reactions and Equations", "file": "Empty.pdf"},
+            {"no": "4", "name": "Effects of Electric Current", "file": "Empty.pdf"},
+            {"no": "5", "name": "Heat", "file": "Empty.pdf"},
+            {"no": "6", "name": "Refraction of Light", "file": "Empty.pdf"},
+            {"no": "7", "name": "Lenses", "file": "Empty.pdf"},
+            {"no": "8", "name": "Metallurgy", "file": "Empty.pdf"},
+            {"no": "9", "name": "Carbon Compounds", "file": "Empty.pdf"},
+            {"no": "10", "name": "Space Missions", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Science 2",
+          "chapters": [
+            {"no": "1", "name": "Heredity and Evolution", "file": "Empty.pdf"},
+            {"no": "2", "name": "Life Processes in Living Organisms Part - 1", "file": "Empty.pdf"},
+            {"no": "3", "name": "Life Processes in Living Organisms Part - 2", "file": "Empty.pdf"},
+            {"no": "4", "name": "Environmental Management", "file": "Empty.pdf"},
+            {"no": "5", "name": "Towards Green Energy", "file": "Empty.pdf"},
+            {"no": "6", "name": "Animal Classification", "file": "Empty.pdf"},
+            {"no": "7", "name": "Introduction to Microbiology", "file": "Empty.pdf"},
+            {"no": "8", "name": "Cell Biology and Biotechnology", "file": "Empty.pdf"},
+            {"no": "9", "name": "Social Health", "file": "Empty.pdf"},
+            {"no": "10", "name": "Disaster Management", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "History",
+          "chapters": [
+            {"no": "H1", "name": "Historiography: Development in the West", "file": "Empty.pdf"},
+            {"no": "H2", "name": "Historiography: Indian Tradition", "file": "Empty.pdf"},
+            {"no": "H3", "name": "Applied History", "file": "Empty.pdf"},
+            {"no": "H4", "name": "History of Indian Arts", "file": "Empty.pdf"},
+            {"no": "H5", "name": "Mass Media and History", "file": "Empty.pdf"},
+            {"no": "H6", "name": "Entertainment and History", "file": "Empty.pdf"},
+            {"no": "H7", "name": "Sports and History", "file": "Empty.pdf"},
+            {"no": "H8", "name": "Tourism and History", "file": "Empty.pdf"},
+            {"no": "H9", "name": "Heritage Management", "file": "Empty.pdf"},
+
+            {"no": "C1", "name": "Working of the Constitution", "file": "Empty.pdf"},
+            {"no": "C2", "name": "The Electoral Process", "file": "Empty.pdf"},
+            {"no": "C3", "name": "Political Parties (National)", "file": "Empty.pdf"},
+            {"no": "C4", "name": "Political Parties (Regional)", "file": "Empty.pdf"},
+            {"no": "C5", "name": "Social and Political Movements", "file": "Empty.pdf"},
+            {"no": "C6", "name": "Challenges faced by Indian Democracy", "file": "Empty.pdf"}
+          ]
+        },
+        {
+          "subject_name": "Geography",
+          "chapters": [
+            {"no": "1", "name": "Field Visit", "file": "Empty.pdf"},
+            {"no": "2", "name": "Location and Extent", "file": "Empty.pdf"},
+            {"no": "3", "name": "Physiography and Drainage", "file": "Empty.pdf"},
+            {"no": "4", "name": "Climate", "file": "Empty.pdf"},
+            {"no": "5", "name": "Natural Vegetation and Wildlife", "file": "Empty.pdf"},
+            {"no": "6", "name": "Population", "file": "Empty.pdf"},
+            {"no": "7", "name": "Human Settlements", "file": "Empty.pdf"},
+            {"no": "8", "name": "Economy and Occupations", "file": "Empty.pdf"},
+            {"no": "9", "name": "Tourism, Transport and Communication", "file": "Empty.pdf"}
+          ]
+        }
+      ]
+    }
+  ]
+}

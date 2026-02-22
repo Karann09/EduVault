@@ -1,6 +1,6 @@
 import 'package:eduvault/Components/InputValidator.dart';
 import 'package:eduvault/Components/Routes.dart';
-import 'package:eduvault/Home.dart';
+import 'package:eduvault/Home/Home.dart';
 import 'package:eduvault/Login/Registration.dart';
 import 'package:eduvault/Login/ForgetPassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,26 +26,23 @@ class _LoginState extends State<Login> {
         password: password.text.trim(),
       );
 
-      Navigator.pushAndRemoveUntil(
-        context,
-        myRoute(Home()),
-            (route) => false,
-      );
-
+      if (!mounted) return;
+      Navigator.pushAndRemoveUntil(context, myRoute(Home()), (route) => false);
     } on FirebaseAuthException catch (e) {
-      String message = "Invalid Credentials";
+      String message = "Re-Install The App";
 
-      if (e.code == 'user-not-found') {
-        message = "User not found";
-      } else if (e.code == 'wrong-password') {
-        message = "Wrong password";
-      } else if (e.code == 'invalid-email') {
-        message = "Invalid email format";
+      if (e.code == 'invalid-credential') {
+        message = "Invalid Email or Password";
+      } else if (e.code == 'network-request-failed') {
+        message = "Internet Connection Failed";
+      } else if (e.code == 'too-many-requests') {
+        message = "Too many attempts. Try again later.";
       }
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(message)),
-      );
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
     }
   }
 
@@ -138,13 +135,12 @@ class _LoginState extends State<Login> {
                                   });
                                 },
                                 icon: Icon(
-                                  eye
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
+                                  eye ? Icons.visibility_off : Icons.visibility,
                                 ),
                               ),
                               border: const OutlineInputBorder(),
                             ),
+                            keyboardType: TextInputType.number,
                           ),
 
                           const SizedBox(height: 5),
@@ -199,10 +195,7 @@ class _LoginState extends State<Login> {
                         overlayColor: .all(Colors.transparent),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          myRoute(Registration()),
-                        );
+                        Navigator.push(context, myRoute(Registration()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

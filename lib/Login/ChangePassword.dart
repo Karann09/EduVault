@@ -36,7 +36,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 30,right: 5,left: 5),
+                  padding: const EdgeInsets.only(top: 30, right: 5, left: 5),
                   child: Column(
                     spacing: 12,
                     children: [
@@ -129,7 +129,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     myRoute(Login()),
-                                        (Route) => false,
+                                    (Route) => false,
                                   );
                                 },
                                 child: Text("Done"),
@@ -163,4 +163,3 @@ class _ChangePasswordState extends State<ChangePassword> {
     );
   }
 }
-

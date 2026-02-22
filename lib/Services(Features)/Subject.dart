@@ -10,23 +10,17 @@ class Subject extends StatefulWidget {
 class _SubjectState extends State<Subject> {
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
-        appBar: AppBar(title: Text("Subjects")),
-        backgroundColor: Colors.white,
-        body:
-        SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
         child: Container(
-          color: Colors.blue,
+          color: Colors.yellowAccent,
           child: Column(
-            children: [
-              Center(
-                child: Text("Subject Page"),
-              )
-            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Center(child: Text("Timetable Page"))],
           ),
         ),
-            ),
-      );
+      ),
+    );
   }
 }

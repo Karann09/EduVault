@@ -95,7 +95,10 @@ class _OtpPageState extends State<OtpPage> {
                 print(otp);
                 if (_formKey.currentState!.validate()) {
                   if (listEquals(otp, [1, 2, 3, 4])) {
-                    Navigator.pushReplacement(context, myRoute(ChangePassword()));
+                    Navigator.pushReplacement(
+                      context,
+                      myRoute(ChangePassword()),
+                    );
                   } else {
                     print("Invalid Otp");
                   }

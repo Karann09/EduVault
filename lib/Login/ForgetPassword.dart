@@ -23,7 +23,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(title:Text("Forget Password"),automaticallyImplyLeading: false),
+        appBar: AppBar(
+          title: Text("Forget Password"),
+          automaticallyImplyLeading: false,
+        ),
         body: Container(
           decoration: BoxDecoration(color: Color(0xFFF7FAFF)),
           child: Form(
@@ -32,19 +35,18 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               padding: EdgeInsets.only(right: 20, left: 20),
               children: [
                 Padding(
-                    padding: const EdgeInsets.all(10),
-                    child:
-                    TextFormField(
-                      controller: email,
-                      decoration: InputDecoration(
-                          hint: Text("Enter Email"),
-                          border:OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.email),
-                          labelText: "Email"
-                      ),
-                      validator: FormValidators.emailValidator,
-                    )
-                )
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormField(
+                    controller: email,
+                    decoration: InputDecoration(
+                      hint: Text("Enter Email"),
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.email),
+                      labelText: "Email",
+                    ),
+                    validator: FormValidators.emailValidator,
+                  ),
+                ),
               ],
             ),
           ),
@@ -58,7 +60,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             child: Button(
               text: 'Next',
               onTap: () {
-                if(_formKey.currentState!.validate()){
+                if (_formKey.currentState!.validate()) {
                   print('forget password');
                   Navigator.push(context, myRoute(OtpPage()));
                 }
