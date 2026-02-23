@@ -22,18 +22,16 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 2;
-  final List<String> titles = [
-    "Textbooks",
-    "Notes",
-    "EduVault", //For HomePage Itself
-    "Quiz",
-    "Timetable",
-  ];
+  int? _userClass; // Cache ke liye variable
+  String _name = "User";
+  String _email = "";
+  String _firstLetter = "U";
+
+  final List<String> titles = ["Textbooks", "Notes", "EduVault", "Quiz", "Timetable"];
 
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-
     if (user == null) return const Login();
 
     return StreamBuilder<DocumentSnapshot>(
@@ -42,31 +40,29 @@ class _HomeState extends State<Home> {
           .doc(user.uid)
           .snapshots(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+
+        // --- YE CHANGE SABSE IMPORTANT HAI ---
+        // Agar pehle se data (_userClass) hai, toh loader MAT dikhao
+        if (snapshot.connectionState == ConnectionState.waiting && _userClass == null) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
         }
 
-        int userClass = 9;
-        String name = "User";
-        String email = user.email ?? "";
-        String firstLetter = "U";
-
+        // Data update logic (sirf tab jab snapshot mein data ho)
         if (snapshot.hasData && snapshot.data!.exists) {
           var data = snapshot.data!.data() as Map<String, dynamic>;
           var rawClass = data['class'] ?? 9;
-          userClass = (rawClass is int)
-              ? rawClass
-              : int.tryParse(rawClass.toString()) ?? 9;
-          name = data['name'] ?? "User";
-          email = data['email'] ?? email;
-          firstLetter = name.isNotEmpty ? name[0].toUpperCase() : "U";
+          _userClass = (rawClass is int) ? rawClass : int.tryParse(rawClass.toString()) ?? 9;
+          _name = data['name'] ?? "User";
+          _email = data['email'] ?? user.email ?? "";
+          _firstLetter = _name.isNotEmpty ? _name[0].toUpperCase() : "U";
         }
 
+        // Pages list - Ye IndexedStack ke andar use hogi
         final List<Widget> pages = [
-          Textbooks(selectedClass: userClass),
-          Notes(selectedClass: userClass),
+          Textbooks(selectedClass: _userClass ?? 9),
+          Notes(selectedClass: _userClass ?? 9),
           const Defaulthome(),
           const Quiz(),
           const Subject(),
@@ -112,7 +108,7 @@ class _HomeState extends State<Home> {
                               radius: 35,
                               backgroundColor: Colors.white,
                               child: Text(
-                                firstLetter,
+                                _firstLetter,
                                 style: const TextStyle(
                                   fontSize: 28,
                                   color: Colors.blue,
@@ -122,7 +118,7 @@ class _HomeState extends State<Home> {
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              name,
+                              _name,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -130,7 +126,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                             Text(
-                              email,
+                              _email,
                               style: const TextStyle(
                                 color: Colors.white70,
                                 fontSize: 13,

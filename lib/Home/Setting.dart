@@ -1,6 +1,8 @@
 // For changing class and account deletion
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eduvault/Components/Routes.dart';
+import 'package:eduvault/Home/Home.dart';
 import 'package:eduvault/Login/Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -150,7 +152,6 @@ class _SettingState extends State<Setting> {
                                 ),
                                 const SizedBox(height: 20),
 
-                                // Option 9
                                 GestureDetector(
                                   onTap: () {
                                     setModalState(() => selectedClass = "9");
@@ -210,6 +211,7 @@ class _SettingState extends State<Setting> {
                                               });
                                           Navigator.pop(context);
                                           Navigator.pop(context);
+                                          Navigator.push(context, myRoute(Home()));
                                           ScaffoldMessenger.of(
                                             context,
                                           ).showSnackBar(

@@ -3,9 +3,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdfx/pdfx.dart';
 
-class Notes extends StatelessWidget {
+// 1. StatefulWidget mein convert kiya
+class Notes extends StatefulWidget {
   final int selectedClass;
-  Notes({required this.selectedClass});
+  const Notes({super.key, required this.selectedClass});
+
+  @override
+  State<Notes> createState() => _NotesState();
+}
+
+// 2. AutomaticKeepAliveClientMixin add kiya
+class _NotesState extends State<Notes> with AutomaticKeepAliveClientMixin {
+  late Future<List<dynamic>> _subjectsFuture;
+
+  @override
+  // Isse state save rehti hai
+  bool get wantKeepAlive => true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Future ko initState mein call kiya taaki ye sirf EK baar chale
+    _subjectsFuture = getSubjects();
+  }
+
+  // Agar user ki class badalti hai, toh data refresh karne ke liye ye code:
+  @override
+  void didUpdateWidget(Notes oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedClass != widget.selectedClass) {
+      setState(() {
+        _subjectsFuture = getSubjects();
+      });
+    }
+  }
 
   final Map<String, String> subjectEmojis = {
     "English": "📖",
@@ -15,8 +46,8 @@ class Notes extends StatelessWidget {
     "Maths 2": "✖️",
     "Science": "🧬",
     "Science 1": "🔬",
-    "Science 2": "🦠", //"🧪"
-    "History": "⏳", //"📜"
+    "Science 2": "🦠",
+    "History": "⏳",
     "Geography": "🌍",
   };
 
@@ -26,7 +57,7 @@ class Notes extends StatelessWidget {
 
     final classList = data['classes'] as List;
     final selectedClassData = classList.firstWhere(
-      (c) => c['class_id'] == selectedClass.toString(),
+          (c) => c['class_id'] == widget.selectedClass.toString(),
       orElse: () => null,
     );
 
@@ -35,20 +66,18 @@ class Notes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); // Mixin ke liye zaroori hai
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
       body: FutureBuilder<List<dynamic>>(
-        future: getSubjects(),
+        future: _subjectsFuture, // Variable use kiya
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
-          if (snapshot.hasError ||
-              !snapshot.hasData ||
-              snapshot.data!.isEmpty) {
-            return const Center(
-              child: Text("Data not found. Check assets/Data.json"),
-            );
+          if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text("Data not found."));
           }
 
           final subjects = snapshot.data!;
@@ -65,41 +94,26 @@ class Notes extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(color: Colors.grey.shade300),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 5,
-                    ),
-                  ],
+                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 5)],
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
                     maxRadius: 25,
                     backgroundColor: Colors.blue.shade50,
                     child: Text(
-                      subjectEmojis[sub['subject_name']] ??
-                          sub['subject_name'][0],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
+                      subjectEmojis[sub['subject_name']] ?? sub['subject_name'][0],
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                   ),
-                  title: Text(
-                    sub['subject_name'],
-                    style: const TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                  // trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                  title: Text(sub['subject_name'], style: const TextStyle(fontWeight: FontWeight.w600)),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ChapterListScreen(
                           subjectName: sub['subject_name'],
-                          chapters: List<Map<String, dynamic>>.from(
-                            sub['chapters'],
-                          ),
-                          selectedClass: selectedClass,
+                          chapters: List<Map<String, dynamic>>.from(sub['chapters']),
+                          selectedClass: widget.selectedClass,
                         ),
                       ),
                     );
@@ -113,7 +127,6 @@ class Notes extends StatelessWidget {
     );
   }
 }
-
 // --- CHAPTER LIST SCREEN ---
 class ChapterListScreen extends StatelessWidget {
   final String subjectName;
