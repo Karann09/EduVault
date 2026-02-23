@@ -112,13 +112,14 @@ class PDFViewerPage extends StatefulWidget {
 }
 
 class _PDFViewerPageState extends State<PDFViewerPage> {
-  late PdfController _pdfController;
+  late PdfControllerPinch _pdfController;
 
   @override
   void initState() {
     super.initState();
-    _pdfController = PdfController(
+    _pdfController = PdfControllerPinch(
       document: PdfDocument.openAsset(widget.path),
+      viewportFraction: 0.95,
     );
   }
 
@@ -148,17 +149,9 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
           ),
         ],
       ),
-      body: PdfView(
+      body: PdfViewPinch(
         controller: _pdfController,
         scrollDirection: Axis.vertical,
-        pageSnapping: false,
-        physics: const BouncingScrollPhysics(),
-        onDocumentLoaded: (document) {
-          print("Document loaded: ${document.pagesCount} pages");
-        },
-        onDocumentError: (error) {
-          print("Error loading PDF: $error");
-        },
       ),
     );
   }

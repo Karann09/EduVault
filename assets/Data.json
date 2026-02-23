@@ -6,8 +6,8 @@
         {
           "subject_name": "English",
           "chapters": [
-            {"no": "1.1", "name": "Life", "file": "Empty.pdf"},
-            {"no": "1.2", "name": "A Synopsis- The Swiss Family Robinson", "file": "Empty.pdf"},
+            {"no": "1.1", "name": "Life", "file": "EC1_C9.pdf"},
+            {"no": "1.2", "name": "A Synopsis- The Swiss Family Robinson", "file": "EC2_C9.pdf"},
             {"no": "1.3", "name": "Have you ever seen...?", "file": "Empty.pdf"},
             {"no": "1.4", "name": "Have you thought of the verb ‘have’", "file": "Empty.pdf"},
             {"no": "1.5", "name": "The Necklace", "file": "Empty.pdf"},
@@ -34,8 +34,8 @@
         {
           "subject_name": "Hindi",
           "chapters": [
-            {"no": "1.1", "name": "चाँदनी रात (कविता)", "file": "Empty.pdf"},
-            {"no": "1.2", "name": "बिल्ली का बिलुंगड़ा", "file": "Empty.pdf"},
+            {"no": "1.1", "name": "चाँदनी रात (कविता)", "file": "HC1_C9.pdf"},
+            {"no": "1.2", "name": "बिल्ली का बिलुंगड़ा", "file": "HC2_C9.pdf"},
             {"no": "1.3", "name": "कबीर (पूरक पठन)", "file": "Empty.pdf"},
             {"no": "1.4", "name": "किताबें (कविता)", "file": "Empty.pdf"},
             {"no": "1.5", "name": "जूलिया", "file": "Empty.pdf"},
@@ -87,7 +87,7 @@
         {
           "subject_name": "Maths 1",
           "chapters": [
-            {"no": "1", "name": "Sets", "file": "Empty.pdf"},
+            {"no": "1", "name": "Sets", "file": "M1C1_C9.pdf"},
             {"no": "2", "name": "Real Numbers", "file": "Empty.pdf"},
             {"no": "3", "name": "Polynomials", "file": "Empty.pdf"},
             {"no": "4", "name": "Ratio and Proportion", "file": "Empty.pdf"},
@@ -113,8 +113,8 @@
         {
           "subject_name":"Science",
           "chapters":[
-            {"no": "1", "name": "Laws of Motion", "file": "Empty.pdf"},
-            {"no": "2", "name": "Work and Energy", "file": "Empty.pdf"},
+            {"no": "1", "name": "Laws of Motion", "file": "SC1_C9.pdf"},
+            {"no": "2", "name": "Work and Energy", "file": "SC2_C9.pdf"},
             {"no": "3", "name": "Current Electricity", "file": "Empty.pdf"},
             {"no": "4", "name": "Measurement of Matter", "file": "Empty.pdf"},
             {"no": "5", "name": "Acids, Bases and Salts", "file": "Empty.pdf"},
@@ -180,7 +180,7 @@
         {
           "subject_name": "English",
           "chapters": [
-            {"no": "1.1", "name": "Where the Mind is Without Fear", "file": "Empty.pdf"},
+            {"no": "1.1", "name": "Where the Mind is Without Fear", "file": "EC1_C10.pdf"},
             {"no": "1.2", "name": "The Thief’s Story", "file": "Empty.pdf"},
             {"no": "1.3", "name": "On Wings of Courage", "file": "Empty.pdf"},
             {"no": "1.4", "name": "All the World’s a Stage", "file": "Empty.pdf"},

@@ -240,7 +240,7 @@ class _RegistrationState extends State<Registration> {
                   TextButton(
                     style: ButtonStyle(overlayColor: .all(Colors.transparent)),
                     onPressed: () {
-                      Navigator.push(context, myRoute(Login()));
+                      Navigator.pushReplacement(context, myRoute(Login()));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
