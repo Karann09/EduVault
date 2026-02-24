@@ -112,14 +112,14 @@ class PDFViewerPage extends StatefulWidget {
 }
 
 class _PDFViewerPageState extends State<PDFViewerPage> {
-  late PdfControllerPinch _pdfController;
+  late PdfController _pdfController;
 
   @override
   void initState() {
     super.initState();
-    _pdfController = PdfControllerPinch(
+    _pdfController = PdfController(
       document: PdfDocument.openAsset(widget.path),
-      viewportFraction: 0.95,
+      viewportFraction: 0.72,
     );
   }
 
@@ -149,9 +149,10 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
           ),
         ],
       ),
-      body: PdfViewPinch(
+      body: PdfView(
         controller: _pdfController,
         scrollDirection: Axis.vertical,
+        pageSnapping: false,
       ),
     );
   }

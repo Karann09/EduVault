@@ -108,7 +108,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 child: _isLoading
-                    ? const CircularProgressIndicator(color: Colors.white)
+                    ? const CircularProgressIndicator(color: Colors.white,backgroundColor: Colors.blue)
                     : const Text(
                         "Confirm Changes",
                         style: TextStyle(fontSize: 16),
