@@ -21,11 +21,7 @@ class Textbooks extends StatelessWidget {
     {"name": "English", "fileName": "English.pdf", "image": "English.jpg"},
     {"name": "Hindi", "fileName": "Hindi.pdf", "image": "Hindi.jpg"},
     {"name": "Marathi", "fileName": "Marathi.pdf", "image": "Marathi.jpg"},
-    {
-      "name": "Science I",
-      "fileName": "Science_1.pdf",
-      "image": "Science 1.jpg",
-    },
+    {"name": "Science I", "fileName": "Science_1.pdf", "image": "Science 1.jpg",},
     {"name": "Science II", "fileName": "Empty.pdf", "image": "Science 2.jpg"},
     {"name": "Maths I", "fileName": "Maths_1.pdf", "image": "Maths 1.jpg"},
     {"name": "Maths II", "fileName": "Maths_2.pdf", "image": "Maths 2.jpg"},

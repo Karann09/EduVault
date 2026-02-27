@@ -140,7 +140,7 @@ class _LoginState extends State<Login> {
                               ),
                               border: const OutlineInputBorder(),
                             ),
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.name,
                           ),
 
                           const SizedBox(height: 5),
@@ -195,7 +195,10 @@ class _LoginState extends State<Login> {
                         overlayColor: .all(Colors.transparent),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(context, myRoute(Registration()));
+                        Navigator.pushReplacement(
+                          context,
+                          myRoute(Registration()),
+                        );
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

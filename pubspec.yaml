@@ -98,6 +98,7 @@ flutter:
     - assets/Class_9/
     - assets/Class_10/
     - assets/Data.json
+    - assets/Ridimages/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

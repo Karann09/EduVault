@@ -200,7 +200,7 @@ class _RegistrationState extends State<Registration> {
                               ),
                               border: const OutlineInputBorder(),
                             ),
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.name,
                           ),
                         ],
                       ),

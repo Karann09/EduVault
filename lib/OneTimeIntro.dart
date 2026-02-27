@@ -18,17 +18,17 @@ class _StartpageState extends State<Startpage> {
   final List<Map<String, dynamic>> data = [
     {
       'photo': 'Slide1',
-      'heading': '10+ Board Exam Question Papers & Solution',
+      'heading': 'Class & Standard-wise Textbook PDFs',
       'text':
-          'Explore previous 10+ Board exam Question Papers with Solutions PDF, Paper patterns, etc',
+          'Access official textbook PDFs organized by class and standard. Students can download and read subject-wise materials anytime.',
       'height': 200.00,
       'width': 200.00,
     },
     {
       'photo': 'Slide3',
-      'heading': 'Chapter-wise Board exam solution & Paper pattern',
+      'heading': 'Student Notes & Interactive Quiz',
       'text':
-          'Check the board exam questions from each chapter with solution ans study as per paper pattern & question bank',
+          'View structured study notes for each subject and attempt quizzes to test understanding with instant scoring and feedback.',
     },
     {
       'photo': 'Slide2',
@@ -75,7 +75,11 @@ class _StartpageState extends State<Startpage> {
                 GestureDetector(
                   behavior: HitTestBehavior.opaque,
                   onTap: () async {
-                    _controller.animateToPage(2, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                    _controller.animateToPage(
+                      2,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeIn,
+                    );
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.setBool('isFirstTime', false);
                     Navigator.pushAndRemoveUntil(

@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFF7FAFF), // Your default color
-          foregroundColor: Colors.black,      // Default text/icon color
+          backgroundColor: Color(0xFFF7FAFF),
+          foregroundColor: Colors.black,
         ),
       ),
       home: isFirstTime ? const Startpage() : (isLoggedIn ? const Home() : const Login()),

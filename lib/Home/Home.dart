@@ -8,7 +8,7 @@ import 'package:eduvault/Home/Setting.dart';
 import 'package:eduvault/Login/Login.dart';
 import 'package:eduvault/Services(Features)/Notes.dart';
 import 'package:eduvault/Services(Features)/Quiz.dart';
-import 'package:eduvault/Services(Features)/Subject.dart';
+import 'package:eduvault/Services(Features)/Schedule.dart';
 import 'package:eduvault/Services(Features)/Textbooks.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +22,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 2;
-  int? _userClass; // Cache ke liye variable
+  int? _userClass;
   String _name = "User";
   String _email = "";
   String _firstLetter = "U";
 
-  final List<String> titles = ["Textbooks", "Notes", "EduVault", "Quiz", "Timetable"];
+  final List<String> titles = [
+    "Textbooks",
+    "Notes",
+    "EduVault",
+    "Quiz",
+    "Today's Schedule",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,32 +46,30 @@ class _HomeState extends State<Home> {
           .doc(user.uid)
           .snapshots(),
       builder: (context, snapshot) {
-
-        // --- YE CHANGE SABSE IMPORTANT HAI ---
-        // Agar pehle se data (_userClass) hai, toh loader MAT dikhao
-        if (snapshot.connectionState == ConnectionState.waiting && _userClass == null) {
+        if (snapshot.connectionState == ConnectionState.waiting &&
+            _userClass == null) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
         }
 
-        // Data update logic (sirf tab jab snapshot mein data ho)
         if (snapshot.hasData && snapshot.data!.exists) {
           var data = snapshot.data!.data() as Map<String, dynamic>;
           var rawClass = data['class'] ?? 9;
-          _userClass = (rawClass is int) ? rawClass : int.tryParse(rawClass.toString()) ?? 9;
+          _userClass = (rawClass is int)
+              ? rawClass
+              : int.tryParse(rawClass.toString()) ?? 9;
           _name = data['name'] ?? "User";
           _email = data['email'] ?? user.email ?? "";
           _firstLetter = _name.isNotEmpty ? _name[0].toUpperCase() : "U";
         }
 
-        // Pages list - Ye IndexedStack ke andar use hogi
         final List<Widget> pages = [
           Textbooks(selectedClass: _userClass ?? 9),
           Notes(selectedClass: _userClass ?? 9),
           const Defaulthome(),
-          const Quiz(),
-          const Subject(),
+          QuizPage(selectedClass: _userClass ?? 9),
+          const SchedulePage(),
         ];
 
         return GestureDetector(
@@ -230,7 +234,7 @@ class _HomeState extends State<Home> {
                   label: 'Textbook',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.note_alt_outlined),
+                  icon: Icon(Icons.notes),
                   label: 'Notes',
                 ),
                 BottomNavigationBarItem(
@@ -242,8 +246,8 @@ class _HomeState extends State<Home> {
                   label: 'Quiz',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.calendar_today_outlined),
-                  label: 'Timetable',
+                  icon: Icon(Icons.schedule_sharp),
+                  label: 'Schedule',
                 ),
               ],
             ),

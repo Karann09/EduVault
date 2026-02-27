@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdfx/pdfx.dart';
 
-// 1. StatefulWidget mein convert kiya
 class Notes extends StatefulWidget {
   final int selectedClass;
   const Notes({super.key, required this.selectedClass});
@@ -12,22 +11,18 @@ class Notes extends StatefulWidget {
   State<Notes> createState() => _NotesState();
 }
 
-// 2. AutomaticKeepAliveClientMixin add kiya
 class _NotesState extends State<Notes> with AutomaticKeepAliveClientMixin {
   late Future<List<dynamic>> _subjectsFuture;
 
   @override
-  // Isse state save rehti hai
   bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    // Future ko initState mein call kiya taaki ye sirf EK baar chale
     _subjectsFuture = getSubjects();
   }
 
-  // Agar user ki class badalti hai, toh data refresh karne ke liye ye code:
   @override
   void didUpdateWidget(Notes oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -57,7 +52,7 @@ class _NotesState extends State<Notes> with AutomaticKeepAliveClientMixin {
 
     final classList = data['classes'] as List;
     final selectedClassData = classList.firstWhere(
-          (c) => c['class_id'] == widget.selectedClass.toString(),
+      (c) => c['class_id'] == widget.selectedClass.toString(),
       orElse: () => null,
     );
 
@@ -66,7 +61,7 @@ class _NotesState extends State<Notes> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
-    super.build(context); // Mixin ke liye zaroori hai
+    super.build(context);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
@@ -76,7 +71,9 @@ class _NotesState extends State<Notes> with AutomaticKeepAliveClientMixin {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
-          if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+          if (snapshot.hasError ||
+              !snapshot.hasData ||
+              snapshot.data!.isEmpty) {
             return const Center(child: Text("Data not found."));
           }
 
@@ -94,25 +91,39 @@ class _NotesState extends State<Notes> with AutomaticKeepAliveClientMixin {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(color: Colors.grey.shade300),
-                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 5)],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 5,
+                    ),
+                  ],
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
                     maxRadius: 25,
                     backgroundColor: Colors.blue.shade50,
                     child: Text(
-                      subjectEmojis[sub['subject_name']] ?? sub['subject_name'][0],
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                      subjectEmojis[sub['subject_name']] ??
+                          sub['subject_name'][0],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
                     ),
                   ),
-                  title: Text(sub['subject_name'], style: const TextStyle(fontWeight: FontWeight.w600)),
+                  title: Text(
+                    sub['subject_name'],
+                    style: const TextStyle(fontWeight: FontWeight.w600),
+                  ),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ChapterListScreen(
                           subjectName: sub['subject_name'],
-                          chapters: List<Map<String, dynamic>>.from(sub['chapters']),
+                          chapters: List<Map<String, dynamic>>.from(
+                            sub['chapters'],
+                          ),
                           selectedClass: widget.selectedClass,
                         ),
                       ),
@@ -127,7 +138,8 @@ class _NotesState extends State<Notes> with AutomaticKeepAliveClientMixin {
     );
   }
 }
-// --- CHAPTER LIST SCREEN ---
+
+// Chapters List
 class ChapterListScreen extends StatelessWidget {
   final String subjectName;
   final List<Map<String, dynamic>> chapters;
@@ -145,8 +157,8 @@ class ChapterListScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
         title: Text(subjectName),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
         elevation: 0,
       ),
       body: ListView.builder(
@@ -156,7 +168,6 @@ class ChapterListScreen extends StatelessWidget {
           final chapter = chapters[index];
           return GestureDetector(
             onTap: () {
-              // Dynamically creates path based on Class folder
               String fullPath =
                   "assets/Class_$selectedClass/${chapter['file']}";
               Navigator.push(
@@ -204,14 +215,13 @@ class ChapterListScreen extends StatelessWidget {
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
-          // const Icon(Icons.picture_as_pdf, color: Colors.redAccent, size: 20),
         ],
       ),
     );
   }
 }
 
-// --- PDF VIEWER SCREEN ---
+// PDF Screen
 class PDFViewerScreen extends StatefulWidget {
   final String path;
   final String title;
