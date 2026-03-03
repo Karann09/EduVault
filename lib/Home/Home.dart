@@ -10,8 +10,17 @@ import 'package:eduvault/Services(Features)/Notes.dart';
 import 'package:eduvault/Services(Features)/Quiz.dart';
 import 'package:eduvault/Services(Features)/Schedule.dart';
 import 'package:eduvault/Services(Features)/Textbooks.dart';
+import 'package:eduvault/Home/DefaultHome1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+class T {
+  T._();
+  static const blue = Color(0xFF3D6EFF);
+  static const blueSoft = Color(0xFFEBF0FF);
+  static const inkLight = Color(0xFFCDD5E4);
+  static const r10 = 10.0;
+}
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -30,7 +39,7 @@ class _HomeState extends State<Home> {
   final List<String> titles = [
     "Textbooks",
     "Notes",
-    "EduVault",
+    "📚  EduVault",
     "Quiz",
     "Today's Schedule",
   ];
@@ -67,7 +76,7 @@ class _HomeState extends State<Home> {
         final List<Widget> pages = [
           Textbooks(selectedClass: _userClass ?? 9),
           Notes(selectedClass: _userClass ?? 9),
-          const Defaulthome(),
+          const Defaulthome1(),
           QuizPage(selectedClass: _userClass ?? 9),
           const SchedulePage(),
         ];
@@ -98,6 +107,7 @@ class _HomeState extends State<Home> {
 
             drawer: Drawer(
               width: 270,
+              backgroundColor: Colors.white,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -147,32 +157,69 @@ class _HomeState extends State<Home> {
                         padding: EdgeInsets.zero,
                         children: [
                           ListTile(
-                            leading: const Icon(Icons.person),
+                            leading: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                color: T.blueSoft,
+                                borderRadius: BorderRadius.circular(T.r10),
+                              ),
+                              child: const Icon(
+                                Icons.person,
+                                color: T.blue,
+                                size: 18,
+                              ),
+                            ),
                             title: const Text("Profile"),
                             splashColor: Colors.lightBlueAccent,
-                            trailing: const Icon(Icons.chevron_right),
+                            trailing: const Icon(
+                              Icons.chevron_right,
+                              color: T.inkLight,
+                            ),
                             onTap: () {
                               Navigator.push(context, myRoute(EditProfile()));
                             },
                           ),
                           ListTile(
-                            leading: const Icon(Icons.share_outlined),
-                            trailing: const Icon(Icons.chevron_right),
+                            leading: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                color: T.blueSoft,
+                                borderRadius: BorderRadius.circular(T.r10),
+                              ),
+                              child: const Icon(
+                                Icons.share_outlined,
+                                color: T.blue,
+                                size: 18,
+                              ),
+                            ),
+                            trailing: const Icon(
+                              Icons.chevron_right,
+                              color: T.inkLight,
+                            ),
                             splashColor: Colors.lightBlueAccent,
                             title: const Text("Share App"),
                             onTap: () {},
                           ),
                           ListTile(
-                            leading: const Icon(Icons.feedback_outlined),
-                            trailing: const Icon(Icons.chevron_right),
-                            splashColor: Colors.lightBlueAccent,
-                            title: const Text("Feedback"),
-                            onTap: () {},
-                          ),
-                          const Divider(),
-                          ListTile(
-                            leading: const Icon(Icons.settings_outlined),
-                            trailing: const Icon(Icons.chevron_right),
+                            leading: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                color: T.blueSoft,
+                                borderRadius: BorderRadius.circular(T.r10),
+                              ),
+                              child: const Icon(
+                                Icons.settings_outlined,
+                                color: T.blue,
+                                size: 18,
+                              ),
+                            ),
+                            trailing: const Icon(
+                              Icons.chevron_right,
+                              color: T.inkLight,
+                            ),
                             splashColor: Colors.lightBlueAccent,
                             title: const Text("Settings"),
                             onTap: () {
@@ -181,8 +228,23 @@ class _HomeState extends State<Home> {
                             },
                           ),
                           ListTile(
-                            leading: const Icon(Icons.info_outline),
-                            trailing: const Icon(Icons.chevron_right),
+                            leading: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                color: T.blueSoft,
+                                borderRadius: BorderRadius.circular(T.r10),
+                              ),
+                              child: const Icon(
+                                Icons.info_outline,
+                                color: T.blue,
+                                size: 18,
+                              ),
+                            ),
+                            trailing: const Icon(
+                              Icons.chevron_right,
+                              color: T.inkLight,
+                            ),
                             splashColor: Colors.lightBlueAccent,
                             title: const Text("About Us"),
                             onTap: () {},
@@ -220,36 +282,49 @@ class _HomeState extends State<Home> {
 
             body: IndexedStack(index: _currentIndex, children: pages),
 
-            bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: Colors.white,
-              currentIndex: _currentIndex,
-              onTap: (index) => setState(() => _currentIndex = index),
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: Colors.blueAccent,
-              unselectedItemColor: Colors.black,
-              showUnselectedLabels: true,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.book_outlined),
-                  label: 'Textbook',
+            bottomNavigationBar: Container(
+              height: 80,
+              decoration: const BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(17),
+                  topRight: Radius.circular(17),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.notes),
-                  label: 'Notes',
+                gradient: LinearGradient(
+                  colors: [Colors.blue, Colors.blueAccent],
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.quiz_outlined),
-                  label: 'Quiz',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.schedule_sharp),
-                  label: 'Schedule',
-                ),
-              ],
+              ),
+              child: BottomNavigationBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                currentIndex: _currentIndex,
+                onTap: (index) => setState(() => _currentIndex = index),
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.black,
+                showUnselectedLabels: true,
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.book_outlined),
+                    label: 'Textbook',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.notes),
+                    label: 'Notes',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home_outlined),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.quiz_outlined),
+                    label: 'Quiz',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.schedule_sharp),
+                    label: 'Schedule',
+                  ),
+                ],
+              ),
             ),
           ),
         );

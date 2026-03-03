@@ -6,7 +6,6 @@ import 'package:eduvault/Login/Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class T {
@@ -47,14 +46,14 @@ class T {
 TextStyle ts(double sz, FontWeight w, [Color c = T.ink]) =>
     TextStyle(color: c, fontSize: sz, fontWeight: w, letterSpacing: -0.2);
 
-class Defaulthome extends StatefulWidget {
-  const Defaulthome({super.key});
+class Defaulthome1 extends StatefulWidget {
+  const Defaulthome1({super.key});
 
   @override
-  State<Defaulthome> createState() => _DefaulthomeState();
+  State<Defaulthome1> createState() => _Defaulthome1State();
 }
 
-class _DefaulthomeState extends State<Defaulthome> {
+class _Defaulthome1State extends State<Defaulthome1> {
   @override
   int _currentPage = 0;
   final PageController _controller = PageController();
@@ -114,62 +113,22 @@ class _DefaulthomeState extends State<Defaulthome> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         const SizedBox(height: 10),
                         _HeroCard(name: _name, firstLetter: _firstLetter),
                         const SizedBox(height: 25),
 
-                        SizedBox(
-                          height: 170, // Height of slider
-                          child: PageView.builder(
-                            onPageChanged: (index) {
-                              setState(() {
-                                _currentPage = index;
-                              });
-                            },
-                            controller: _controller,
-                            itemCount: images.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: Image.asset(
-                                    images[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(height: 15),
-                        Center(
-                          child: SmoothPageIndicator(
-                            controller: _controller,
-                            count: images.length,
-                            effect: ExpandingDotsEffect(
-                              dotHeight: 8,
-                              dotWidth: 8,
-                              activeDotColor: Colors.blue,
-                              dotColor: Colors.grey.shade400,
-                            ),
-                          ),
-                        ),
-
+                        const _QuoteCard(),
 
                         const SizedBox(height: 25),
                         Text('Quick Access', style: ts(15, FontWeight.w700)),
-                        const SizedBox(height: 17),
+
+                        const SizedBox(height: 12),
                         _QuickGrid(
                           onVideosTap: () => Navigator.push(
-                            context, _slideRoute(const SubjectListPage()),
+                            context,
+                            _slideRoute(const SubjectListPage()),
                           ),
                         ),
-
-
                       ],
                     ),
                   ],
@@ -331,21 +290,19 @@ class _HeroCard extends StatelessWidget {
   );
 }
 
-
-
 class _QuickGrid extends StatelessWidget {
   final VoidCallback onVideosTap;
   const _QuickGrid({required this.onVideosTap});
 
   static const _items = <List>[
-    [Icons.play_circle_outline_rounded, 'Videos',      Color(0xFF3D6EFF)],
-    [Icons.book_outlined,               'Textbooks',   Color(0xFF7C5CDB)],
-    [Icons.note_alt_outlined,           'Notes',       Color(0xFF0FB97A)],
-    [Icons.quiz_outlined,               'Quiz',        Color(0xFFF5A623)],
-    [Icons.calendar_today_outlined,     'Timetable',   Color(0xFF0AAFC9)],
-    [Icons.timer_outlined,              'Pomodoro',    Color(0xFFEF4444)],
-    [Icons.assignment_outlined,         'Assignments', Color(0xFF3D6EFF)],
-    [Icons.bar_chart_rounded,           'Progress',    Color(0xFF0FB97A)],
+    [Icons.play_circle_outline_rounded, 'Videos', Color(0xFF3D6EFF)],
+    [Icons.book_outlined, 'Textbooks', Color(0xFF7C5CDB)],
+    [Icons.note_alt_outlined, 'Notes', Color(0xFF0FB97A)],
+    [Icons.quiz_outlined, 'Quiz', Color(0xFFF5A623)],
+    [Icons.calendar_today_outlined, 'Timetable', Color(0xFF0AAFC9)],
+    [Icons.timer_outlined, 'Pomodoro', Color(0xFFEF4444)],
+    [Icons.assignment_outlined, 'Assignments', Color(0xFF3D6EFF)],
+    [Icons.bar_chart_rounded, 'Progress', Color(0xFF0FB97A)],
   ];
 
   @override
@@ -354,35 +311,44 @@ class _QuickGrid extends StatelessWidget {
     physics: const NeverScrollableScrollPhysics(),
     itemCount: _items.length,
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 4, mainAxisSpacing: 10,
-      crossAxisSpacing: 10, childAspectRatio: 0.9,
+      crossAxisCount: 4,
+      mainAxisSpacing: 10,
+      crossAxisSpacing: 10,
+      childAspectRatio: 0.9,
     ),
     itemBuilder: (_, i) {
-      final icon  = _items[i][0] as IconData;
+      final icon = _items[i][0] as IconData;
       final label = _items[i][1] as String;
       final color = _items[i][2] as Color;
       return GestureDetector(
         onTap: label == 'Videos' ? onVideosTap : () {},
         child: Container(
           decoration: T.card(r: T.r18),
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Container(
-              width: 42, height: 42,
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(T.r14),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(T.r14),
+                ),
+                child: Icon(icon, color: color, size: 21),
               ),
-              child: Icon(icon, color: color, size: 21),
-            ),
-            const SizedBox(height: 7),
-            Text(label, textAlign: TextAlign.center, style: ts(10, FontWeight.w600)),
-          ]),
+              const SizedBox(height: 7),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                style: ts(10, FontWeight.w600),
+              ),
+            ],
+          ),
         ),
       );
     },
   );
 }
-
 
 class ChapterVideo {
   final String chapterTitle;
@@ -415,10 +381,26 @@ const List<Subject> kSubjects = [
     icon: Icons.science_outlined,
     color: Color(0xFF3D6EFF),
     chapters: [
-      ChapterVideo(chapterTitle: 'Chapter 1 – Matter',            videoTitle: 'Introduction to Matter',         youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4'),
-      ChapterVideo(chapterTitle: 'Chapter 2 – Force & Motion',    videoTitle: 'Force and Laws of Motion',       youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o'),
-      ChapterVideo(chapterTitle: 'Chapter 3 – Atoms & Molecules', videoTitle: 'Atoms and Molecules',            youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc'),
-      ChapterVideo(chapterTitle: 'Chapter 4 – Cell Structure',    videoTitle: 'The Fundamental Unit of Life',   youtubeUrl: 'https://www.youtube.com/watch?v=x0uinJvhNxI'),
+      ChapterVideo(
+        chapterTitle: 'Chapter 1 – Matter',
+        videoTitle: 'Introduction to Matter',
+        youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 2 – Force & Motion',
+        videoTitle: 'Force and Laws of Motion',
+        youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 3 – Atoms & Molecules',
+        videoTitle: 'Atoms and Molecules',
+        youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 4 – Cell Structure',
+        videoTitle: 'The Fundamental Unit of Life',
+        youtubeUrl: 'https://www.youtube.com/watch?v=x0uinJvhNxI',
+      ),
     ],
   ),
   Subject(
@@ -426,10 +408,26 @@ const List<Subject> kSubjects = [
     icon: Icons.calculate_outlined,
     color: Color(0xFF0AAFC9),
     chapters: [
-      ChapterVideo(chapterTitle: 'Chapter 1 – Number Systems',       videoTitle: 'Number System Basics',             youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4'),
-      ChapterVideo(chapterTitle: 'Chapter 2 – Polynomials',          videoTitle: 'Introduction to Polynomials',      youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o'),
-      ChapterVideo(chapterTitle: 'Chapter 3 – Coordinate Geometry',  videoTitle: 'Coordinate Geometry',              youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc'),
-      ChapterVideo(chapterTitle: 'Chapter 4 – Linear Equations',     videoTitle: 'Linear Equations in 2 Variables',  youtubeUrl: 'https://www.youtube.com/watch?v=x0uinJvhNxI'),
+      ChapterVideo(
+        chapterTitle: 'Chapter 1 – Number Systems',
+        videoTitle: 'Number System Basics',
+        youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 2 – Polynomials',
+        videoTitle: 'Introduction to Polynomials',
+        youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 3 – Coordinate Geometry',
+        videoTitle: 'Coordinate Geometry',
+        youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 4 – Linear Equations',
+        videoTitle: 'Linear Equations in 2 Variables',
+        youtubeUrl: 'https://www.youtube.com/watch?v=x0uinJvhNxI',
+      ),
     ],
   ),
   Subject(
@@ -437,9 +435,21 @@ const List<Subject> kSubjects = [
     icon: Icons.menu_book_outlined,
     color: Color(0xFF7C5CDB),
     chapters: [
-      ChapterVideo(chapterTitle: 'Chapter 1 – The Fun They Had',   videoTitle: 'The Fun They Had – Explanation',  youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4'),
-      ChapterVideo(chapterTitle: 'Chapter 2 – The Sound of Music', videoTitle: 'The Sound of Music',              youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o'),
-      ChapterVideo(chapterTitle: 'Chapter 3 – The Little Girl',    videoTitle: 'The Little Girl – Analysis',      youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc'),
+      ChapterVideo(
+        chapterTitle: 'Chapter 1 – The Fun They Had',
+        videoTitle: 'The Fun They Had – Explanation',
+        youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 2 – The Sound of Music',
+        videoTitle: 'The Sound of Music',
+        youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 3 – The Little Girl',
+        videoTitle: 'The Little Girl – Analysis',
+        youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc',
+      ),
     ],
   ),
   Subject(
@@ -447,9 +457,21 @@ const List<Subject> kSubjects = [
     icon: Icons.translate,
     color: Color(0xFF0FB97A),
     chapters: [
-      ChapterVideo(chapterTitle: 'Chapter 1 – Do Bailon ki Katha',      videoTitle: 'Do Bailon ki Katha',       youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4'),
-      ChapterVideo(chapterTitle: 'Chapter 2 – Lhasa ki Aur',            videoTitle: 'Lhasa ki Aur',             youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o'),
-      ChapterVideo(chapterTitle: 'Chapter 3 – Upbhog wadi Sanskriti',   videoTitle: 'Upbhog wadi Sanskriti',    youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc'),
+      ChapterVideo(
+        chapterTitle: 'Chapter 1 – Do Bailon ki Katha',
+        videoTitle: 'Do Bailon ki Katha',
+        youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 2 – Lhasa ki Aur',
+        videoTitle: 'Lhasa ki Aur',
+        youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 3 – Upbhog wadi Sanskriti',
+        videoTitle: 'Upbhog wadi Sanskriti',
+        youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc',
+      ),
     ],
   ),
   Subject(
@@ -457,9 +479,21 @@ const List<Subject> kSubjects = [
     icon: Icons.language_outlined,
     color: Color(0xFFF5A623),
     chapters: [
-      ChapterVideo(chapterTitle: 'Chapter 1 – Vaara',           videoTitle: 'Vaara – Explanation',       youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4'),
-      ChapterVideo(chapterTitle: 'Chapter 2 – Maza Abhyas',     videoTitle: 'Maza Abhyas',               youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o'),
-      ChapterVideo(chapterTitle: 'Chapter 3 – Shivaji Maharaj', videoTitle: 'Shivaji Maharaj – Chapter', youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc'),
+      ChapterVideo(
+        chapterTitle: 'Chapter 1 – Vaara',
+        videoTitle: 'Vaara – Explanation',
+        youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 2 – Maza Abhyas',
+        videoTitle: 'Maza Abhyas',
+        youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 3 – Shivaji Maharaj',
+        videoTitle: 'Shivaji Maharaj – Chapter',
+        youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc',
+      ),
     ],
   ),
   Subject(
@@ -467,10 +501,26 @@ const List<Subject> kSubjects = [
     icon: Icons.public_outlined,
     color: Color(0xFFEF4444),
     chapters: [
-      ChapterVideo(chapterTitle: 'Chapter 1 – French Revolution',    videoTitle: 'French Revolution',             youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4'),
-      ChapterVideo(chapterTitle: 'Chapter 2 – Socialism in Europe',  videoTitle: 'Socialism in Europe',           youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o'),
-      ChapterVideo(chapterTitle: 'Chapter 3 – Nazism',               videoTitle: 'Nazism and the Rise of Hitler', youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc'),
-      ChapterVideo(chapterTitle: 'Chapter 4 – Forest Society',       videoTitle: 'Forest Society and Colonialism',youtubeUrl: 'https://www.youtube.com/watch?v=x0uinJvhNxI'),
+      ChapterVideo(
+        chapterTitle: 'Chapter 1 – French Revolution',
+        videoTitle: 'French Revolution',
+        youtubeUrl: 'https://www.youtube.com/watch?v=qUgq8BwVqs4',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 2 – Socialism in Europe',
+        videoTitle: 'Socialism in Europe',
+        youtubeUrl: 'https://www.youtube.com/watch?v=veMhOYRib9o',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 3 – Nazism',
+        videoTitle: 'Nazism and the Rise of Hitler',
+        youtubeUrl: 'https://www.youtube.com/watch?v=3tm-R7ymwhc',
+      ),
+      ChapterVideo(
+        chapterTitle: 'Chapter 4 – Forest Society',
+        videoTitle: 'Forest Society and Colonialism',
+        youtubeUrl: 'https://www.youtube.com/watch?v=x0uinJvhNxI',
+      ),
     ],
   ),
 ];
@@ -491,8 +541,10 @@ AppBar _appBar(String title, [List<Widget>? actions]) => AppBar(
 Route _slideRoute(Widget page) => PageRouteBuilder(
   pageBuilder: (_, __, ___) => page,
   transitionsBuilder: (_, a, __, child) => SlideTransition(
-    position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
-        .animate(CurvedAnimation(parent: a, curve: Curves.easeOutCubic)),
+    position: Tween<Offset>(
+      begin: const Offset(1, 0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: a, curve: Curves.easeOutCubic)),
     child: child,
   ),
   transitionDuration: const Duration(milliseconds: 300),
@@ -502,7 +554,11 @@ Route _slideRoute(Widget page) => PageRouteBuilder(
 class VideoPlayerPage extends StatefulWidget {
   final String title;
   final String youtubeUrl;
-  const VideoPlayerPage({super.key, required this.title, required this.youtubeUrl});
+  const VideoPlayerPage({
+    super.key,
+    required this.title,
+    required this.youtubeUrl,
+  });
 
   @override
   State<VideoPlayerPage> createState() => _VideoPlayerPageState();
@@ -554,12 +610,17 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(18),
                   decoration: T.card(),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text(widget.title, style: ts(16, FontWeight.w600)),
-                    const SizedBox(height: 6),
-                    Text('Tap the video to play or pause.',
-                        style: ts(12, FontWeight.w400, T.inkMid)),
-                  ]),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.title, style: ts(16, FontWeight.w600)),
+                      const SizedBox(height: 6),
+                      Text(
+                        'Tap the video to play or pause.',
+                        style: ts(12, FontWeight.w400, T.inkMid),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -585,42 +646,64 @@ class ChapterListPage extends StatelessWidget {
         itemBuilder: (_, i) {
           final ch = subject.chapters[i];
           return GestureDetector(
-            onTap: () => Navigator.push(context,
-                _slideRoute(VideoPlayerPage(
+            onTap: () => Navigator.push(
+              context,
+              _slideRoute(
+                VideoPlayerPage(
                   title: ch.videoTitle,
                   youtubeUrl: ch.youtubeUrl,
-                ))),
+                ),
+              ),
+            ),
             child: Container(
               margin: const EdgeInsets.only(bottom: 12),
               padding: const EdgeInsets.all(16),
               decoration: T.card(),
-              child: Row(children: [
-                Container(
-                  width: 44, height: 44,
-                  decoration: BoxDecoration(
-                    color: subject.color.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(T.r14),
+              child: Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: subject.color.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(T.r14),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '${i + 1}',
+                        style: ts(16, FontWeight.w700, subject.color),
+                      ),
+                    ),
                   ),
-                  child: Center(
-                    child: Text('${i + 1}',
-                        style: ts(16, FontWeight.w700, subject.color)),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(ch.chapterTitle, style: ts(14, FontWeight.w600)),
+                        const SizedBox(height: 3),
+                        Text(
+                          ch.videoTitle,
+                          style: ts(12, FontWeight.w400, T.inkMid),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(ch.chapterTitle, style: ts(14, FontWeight.w600)),
-                  const SizedBox(height: 3),
-                  Text(ch.videoTitle, style: ts(12, FontWeight.w400, T.inkMid)),
-                ])),
-                Container(
-                  width: 32, height: 32,
-                  decoration: BoxDecoration(
-                    color: subject.color.withOpacity(0.1),
-                    shape: BoxShape.circle,
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      color: subject.color.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.play_arrow_rounded,
+                      color: subject.color,
+                      size: 18,
+                    ),
                   ),
-                  child: Icon(Icons.play_arrow_rounded, color: subject.color, size: 18),
-                ),
-              ]),
+                ],
+              ),
             ),
           );
         },
@@ -643,44 +726,193 @@ class SubjectListPage extends StatelessWidget {
         itemBuilder: (_, i) {
           final sub = kSubjects[i];
           return GestureDetector(
-            onTap: () => Navigator.push(context,
-                _slideRoute(ChapterListPage(subject: sub))),
+            onTap: () => Navigator.push(
+              context,
+              _slideRoute(ChapterListPage(subject: sub)),
+            ),
             child: Container(
               margin: const EdgeInsets.only(bottom: 12),
               padding: const EdgeInsets.all(16),
               decoration: T.card(),
-              child: Row(children: [
-                Container(
-                  width: 48, height: 48,
-                  decoration: BoxDecoration(
-                    color: sub.color.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(T.r14),
+              child: Row(
+                children: [
+                  Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: sub.color.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(T.r14),
+                    ),
+                    child: Icon(sub.icon, color: sub.color, size: 24),
                   ),
-                  child: Icon(sub.icon, color: sub.color, size: 24),
-                ),
-                const SizedBox(width: 14),
-                Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(sub.name, style: ts(15, FontWeight.w600)),
-                  const SizedBox(height: 2),
-                  Text('${sub.chapters.length} chapters',
-                      style: ts(12, FontWeight.w400, T.inkMid)),
-                ])),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: sub.color.withOpacity(0.08),
-                    borderRadius: BorderRadius.circular(20),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(sub.name, style: ts(15, FontWeight.w600)),
+                        const SizedBox(height: 2),
+                        Text(
+                          '${sub.chapters.length} chapters',
+                          style: ts(12, FontWeight.w400, T.inkMid),
+                        ),
+                      ],
+                    ),
                   ),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: [
-                    Icon(Icons.play_circle_outline_rounded, color: sub.color, size: 14),
-                    const SizedBox(width: 4),
-                    Text('Watch', style: ts(11, FontWeight.w600, sub.color)),
-                  ]),
-                ),
-              ]),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: sub.color.withOpacity(0.08),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.play_circle_outline_rounded,
+                          color: sub.color,
+                          size: 14,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          'Watch',
+                          style: ts(11, FontWeight.w600, sub.color),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class _QuoteCard extends StatefulWidget {
+  const _QuoteCard();
+  @override
+  State<_QuoteCard> createState() => _QCSt();
+}
+
+class _QCSt extends State<_QuoteCard> with TickerProviderStateMixin {
+  int _i = 0;
+  late final AnimationController _fade;
+  late Timer _timer;
+
+  static const _q = [
+    [
+      'Education is the most powerful weapon\nto change the world.',
+      'Nelson Mandela',
+    ],
+    [
+      'The beautiful thing about learning is\nnobody can take it from you.',
+      'B.B. King',
+    ],
+    [
+      'An investment in knowledge\npays the best interest.',
+      'Benjamin Franklin',
+    ],
+    ['Success comes from hard work,\nperseverance and learning.', 'Pelé'],
+    ["Don't watch the clock —\ndo what it does. Keep going.", 'Sam Levenson'],
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _fade = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _fade.forward();
+
+    _timer = Timer.periodic(const Duration(seconds: 5), (_) {
+      if (!mounted) return;
+      _fade.reverse().then((_) {
+        if (!mounted) return;
+        setState(() => _i = (_i + 1) % _q.length);
+        _fade.forward();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _fade.dispose();
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 220,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Colors.blue, Colors.blueAccent],
+        ),
+        borderRadius: BorderRadius.circular(22),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blue.withOpacity(0.28),
+            blurRadius: 24,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: FadeTransition(
+              opacity: _fade,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    _q[_i][0],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      height: 1.55,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    '— ${_q[_i][1]} —',
+                    style: const TextStyle(fontSize: 12, color: Colors.white60),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              _q.length,
+              (j) => AnimatedContainer(
+                duration: const Duration(milliseconds: 400),
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                width: j == _i ? 20 : 6, // The "active" dot expands
+                height: 6,
+                decoration: BoxDecoration(
+                  color: j == _i ? Colors.white : Colors.white30,
+                  borderRadius: BorderRadius.circular(3),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
